@@ -80,6 +80,12 @@
                                     </div>
                                 @endif
 
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
 
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -102,7 +108,7 @@
                                                 placeholder="Email" aria-label="Email" name="email">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
+                                            <input type="password" class="form-control form-control-lg"
                                                 placeholder="Password" aria-label="Password" name="password">
                                         </div>
                                         <div class="form-check form-switch">

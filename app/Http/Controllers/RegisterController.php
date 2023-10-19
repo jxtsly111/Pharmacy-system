@@ -35,6 +35,6 @@ class RegisterController extends Controller
         Auth::login($user);
 
 
-        return back()->with('success', 'Registration completed. You are now logged in.');
+        return view('dashboard');
     }
 }
