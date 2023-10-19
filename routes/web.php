@@ -26,3 +26,5 @@ Route::get('login',[LoginController::class,'login'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('patient', [PatientController::class, 'patient'])->name('patient');
+Route::post('addPatient', [PatientController::class, 'addPatient'])->name('addPatient');
+Route::get('information', [PatientController::class, 'information'])->name('information');
