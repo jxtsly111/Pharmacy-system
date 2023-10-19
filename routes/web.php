@@ -20,4 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('signup',[RegisterController::class,'register'])->name('register');
+Route::post('signup', [RegisterController::class, 'registration'])->name('registration');
 Route::get('login',[LoginController::class,'login'])->name('login');
+Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
