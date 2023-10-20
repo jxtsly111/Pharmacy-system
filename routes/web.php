@@ -31,3 +31,4 @@ Route::get('information', [PatientController::class, 'information'])->name('info
 Route::delete('/patients/{patient}', [PatientController::class,'destroy'])->name('patients.destroy');
 Route::get('patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
 Route::patch('/patients/{patient}', [PatientController::class,'update'])->name('patients.update');
+Route::get('/patients/{patient}', [PatientController::class, 'display'])->name('patients.display');

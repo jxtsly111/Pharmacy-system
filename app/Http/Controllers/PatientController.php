@@ -71,4 +71,8 @@ class PatientController extends Controller
     return back()->with('success', 'Patient information updated successfully.');
 }
 
+    public function display(Patient $patient){
+        return view('display' , compact('patient'));
+    }
+
 }
