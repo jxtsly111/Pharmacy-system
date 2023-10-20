@@ -76,12 +76,14 @@ class PatientController extends Controller
     }
 
     public function search(Request $request)
-{
-    $query = $request->input('query');
-    $patients = Patient::where('name', 'like', '%' . $query . '%')->get();
-
-    return response()->json($patients);
-}
+    {
+        $search = $request->input('search');
+    
+        $results = Patient::where('name', 'like', '%'.$search.'%')->get();
+    
+        return response()->json($results);
+    }
+    
 
 
 }
