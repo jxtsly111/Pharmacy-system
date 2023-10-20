@@ -32,3 +32,4 @@ Route::delete('/patients/{patient}', [PatientController::class,'destroy'])->name
 Route::get('patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
 Route::patch('/patients/{patient}', [PatientController::class,'update'])->name('patients.update');
 Route::get('/patients/{patient}', [PatientController::class, 'display'])->name('patients.display');
+Route::get('/patients/search', [PatientController::class, 'search'])->name('patients.search');

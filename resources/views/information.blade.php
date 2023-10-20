@@ -34,6 +34,13 @@
             <div class="card-header pb-0">
               <h6>Patient Information Table</h6>
             </div>
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Type here...">
+                </div>
+            </div>
+            <div id="searchResults"></div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
@@ -90,6 +97,38 @@
   @include('includes.plugins')
   <!--   Core JS Files   -->
   @include('includes.script')
+  <!-- ... Your previous HTML code ... -->
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.trim(); // Trim the query to remove leading/trailing spaces.
+        
+        if (query === '') {
+            searchResults.innerHTML = ''; // Clear the results if the search input is empty.
+            return;
+        }
+
+        // Make an AJAX request to the server.
+        axios.get(`/patients/search?query=${query}`)
+            .then(response => {
+                const patients = response.data;
+
+                // Display search results in the container.
+                const resultsHtml = patients.map(patient => {
+                    return `<div class="search-result-item">${patient.name}</div>`;
+                }).join('');
+                searchResults.innerHTML = resultsHtml;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+</html>
+
 </body>
 
 </html>

@@ -75,4 +75,13 @@ class PatientController extends Controller
         return view('display' , compact('patient'));
     }
 
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+    $patients = Patient::where('name', 'like', '%' . $query . '%')->get();
+
+    return response()->json($patients);
+}
+
+
 }
