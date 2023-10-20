@@ -15,6 +15,22 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+  
+  
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div class="card-header pb-0">
               <h6>Patient Information Table</h6>
             </div>
@@ -50,15 +66,14 @@
                         <span class="text-secondary text-xs font-weight-bold">{{ $patient->emergency_contact_number }}</span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Update |
-                        </a>
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs"  data-toggle="tooltip" data-original-title="Edit user">
-                            Delete |
-                          </a>
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Display Full Information
-                          </a>
+                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('patients.destroy', $patient->id) }}"  onclick="event.preventDefault(); document.getElementById('delete-form-{{ $patient->id }}').submit();"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <form id="delete-form-{{ $patient->id }}" action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('patients.edit', ['patient' => $patient->id]) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+
+                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>
                       </td>
                     </tr>
                     @endforeach

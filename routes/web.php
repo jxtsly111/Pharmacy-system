@@ -28,3 +28,6 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('patient', [PatientController::class, 'patient'])->name('patient');
 Route::post('addPatient', [PatientController::class, 'addPatient'])->name('addPatient');
 Route::get('information', [PatientController::class, 'information'])->name('information');
+Route::delete('/patients/{patient}', [PatientController::class,'destroy'])->name('patients.destroy');
+Route::get('patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
+Route::patch('/patients/{patient}', [PatientController::class,'update'])->name('patients.update');
