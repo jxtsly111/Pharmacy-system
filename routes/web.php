@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::get('patients/{patient}/edit', [PatientController::class, 'edit'])->name(
 Route::patch('/patients/{patient}', [PatientController::class,'update'])->name('patients.update');
 Route::get('/patients/{patient}', [PatientController::class, 'display'])->name('patients.display');
 Route::get('/search', [PatientController::class, 'search']);
+Route::get('/product', [ProductController::class, 'product'])->name('product');
