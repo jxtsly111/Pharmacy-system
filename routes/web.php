@@ -35,4 +35,4 @@ Route::patch('/patients/{patient}', [PatientController::class,'update'])->name('
 Route::get('/patients/{patient}', [PatientController::class, 'display'])->name('patients.display');
 Route::get('/search', [PatientController::class, 'search']);
 Route::get('/product', [ProductController::class, 'product'])->name('product');
-Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
