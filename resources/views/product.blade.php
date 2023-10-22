@@ -50,7 +50,7 @@
             <div class="nav-wrapper position-relative end-0">
               <ul class="nav nav-pills nav-fill p-1" role="tablist">
                 <li class="nav-item">
-                  <a href="{{route('information')}}" class="nav-link mb-0 px-0 py-1 active d-flex align-items-center justify-content-center " >View All Product Informations</a>
+                  <a href="{{route('product_information')}}" class="nav-link mb-0 px-0 py-1 active d-flex align-items-center justify-content-center " >View All Product Informations</a>
                 </li>
                 </li>
               </ul>
