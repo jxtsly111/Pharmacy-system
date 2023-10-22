@@ -38,3 +38,5 @@ Route::get('/product', [ProductController::class, 'product'])->name('product');
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::get('product_information', [ProductController::class, 'product_information'])->name('product_information');
 Route::delete('/products/{product}', [ProductController::class,'destroy'])->name('products.destroy');
+Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::patch('/products/{product}', [ProductController::class,'update'])->name('products.update');

@@ -59,4 +59,35 @@ class ProductController extends Controller
 
     return back()->with('success', 'Product record deleted successfully.');
 }
+
+public function edit(Product $product){
+    return view('update_product',compact('product'));
+}
+
+public function update(Request $request, Product $product)
+{
+    $data = $request->validate([
+        'product_name' => 'required|string|max:255',
+        'quantity' => 'required|string|max:255',
+        'tax' => 'required|string|max:20',
+        'discount' => 'required|string|max:20',
+        'price' => 'nullable|string|max:255',
+        'status' => 'nullable|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+        'description' => 'nullable|string|max:255',
+    ]);
+
+    if ($request->hasFile('image')) {
+        // Handle image upload
+        $imagePath = $request->file('image')->store('products', 'public');
+        $data['image'] = $imagePath;
+    }
+
+    $product->update($data);
+
+    return back()->with('success', 'Product information updated successfully.');
+}
+
+
+
 }
