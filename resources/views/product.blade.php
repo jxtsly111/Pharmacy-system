@@ -62,7 +62,7 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-md-12">
-          <form class="card" method="POST" action="{{route('addPatient')}}">@csrf
+          <form class="card" method="POST" action="{{route('addProduct')}}">@csrf
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
                 <button class="btn btn-primary btn-sm ms-auto" type="submit">Add Product</button>
@@ -80,7 +80,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Quantity</label>
-                    <input class="form-control" type="text" name="Quantity" >
+                    <input class="form-control" type="text" name="quantity" >
                   </div>
                 </div>
                 <div class="col-md-6">
