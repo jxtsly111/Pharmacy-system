@@ -64,7 +64,7 @@
                         </div>
                       </td>
                       <td>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->product_name }}" />
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->product_name }}" style="width: 50px" />
                       </td>
                       <td class="align-middle text-center text-sm">
                         <h6 class="mb-0 text-sm">{{ $product->status}}</h6>
