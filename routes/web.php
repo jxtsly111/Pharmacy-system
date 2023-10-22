@@ -37,3 +37,4 @@ Route::get('/search', [PatientController::class, 'search']);
 Route::get('/product', [ProductController::class, 'product'])->name('product');
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::get('product_information', [ProductController::class, 'product_information'])->name('product_information');
+Route::delete('/products/{product}', [ProductController::class,'destroy'])->name('products.destroy');

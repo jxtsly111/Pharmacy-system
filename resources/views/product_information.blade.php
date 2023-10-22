@@ -72,16 +72,16 @@
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{ $product->price }}</span>
                       </td>
-                      {{-- <td class="align-middle">
-                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('patients.destroy', $patient->id) }}"  onclick="event.preventDefault(); document.getElementById('delete-form-{{ $patient->id }}').submit();"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <form id="delete-form-{{ $patient->id }}" action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: none;">
+                      <td class="align-middle">
+                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('products.destroy', $product->id) }}"  onclick="event.preventDefault(); document.getElementById('delete-form-{{ $product->id }}').submit();"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <form id="delete-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
                         </form>
                         <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('patients.edit', ['patient' => $patient->id]) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 
                         <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('patients.display', ['patient' => $patient->id]) }}"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>
-                      </td> --}}
+                      </td> 
                     </tr>
                     @endforeach
                   </tbody>

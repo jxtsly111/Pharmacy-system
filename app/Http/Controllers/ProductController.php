@@ -52,4 +52,11 @@ class ProductController extends Controller
         $products = Product::all();
         return view('product_information',['products' => $products]);
     }
+
+    public function destroy(Product $product)
+{
+    $product->delete();
+
+    return back()->with('success', 'Product record deleted successfully.');
+}
 }
