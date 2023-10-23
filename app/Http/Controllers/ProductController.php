@@ -98,6 +98,18 @@ public function display(Request $request, Product $product){
     return view('product_display' , compact('product'));
 }
 
+public function search(Request $request)
+{
+    $search = $request->input('search');
+
+    // Query the products based on your search criteria
+    $products = Product::where('product_name', 'like', "%$search%")
+        ->orWhere('status', 'like', "%$search%")
+        ->get();
+
+    return response()->json($products);
+}
+
 
 
 }

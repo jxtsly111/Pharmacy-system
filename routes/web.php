@@ -41,3 +41,5 @@ Route::delete('/products/{product}', [ProductController::class,'destroy'])->name
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::patch('/products/{product}', [ProductController::class,'update'])->name('products.update');
 Route::get('/products/{product}', [ProductController::class, 'display'])->name('products.display');
+Route::get('/search', [ProductController::class, 'search']);
+

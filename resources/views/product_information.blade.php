@@ -32,12 +32,12 @@
             </div>
         @endif
             <div class="card-header pb-0">
-              <h6>Patient Information Table</h6>
+              <h6>Product Information Table</h6>
             </div>
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                 <div class="input-group">
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" id="search" name="search" placeholder="Search for patients...">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="Search for products...">
                 </div>
             </div>
             <div id="search-results"></div>
@@ -102,109 +102,62 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  {{-- <script>
+  <script>
     $(document).ready(function () {
-        $('#search').on('input', function () {
-            let search = $(this).val();
-            if (search.length >= 3) {
-                $.ajax({
-                    url: '/search',
-                    type: 'GET',
-                    data: { search: search },
-                    success: function (response) {
-                        let results = '';
-                        $.each(response, function (index, patient) {
-                            results += '<tr>';
-                            results += '<td>';
-                            results += '<div class="d-flex px-2 py-1">';
-                            results += '<div class="d-flex flex-column justify-content-center">';
-                            results += '<h6 class="mb-0 text-sm">' + patient.name + '</h6>';
-                            results += '</div>';
-                            results += '</div>';
-                            results += '</td>';
-                            results += '<td>';
-                            results += '<p class="text-xs font-weight-bold mb-0">' + patient.DOB + '</p>';
-                            results += '</td>';
-                            results += '<td class="align-middle text-center text-sm">';
-                            results += '<h6 class="mb-0 text-sm">' + patient.contact_number + '</h6>';
-                            results += '</td>';
-                            results += '<td class="align-middle text-center">';
-                            results += '<span class="text-secondary text-xs font-weight-bold">' + patient.emergency_contact_number + '</span>';
-                            results += '</td>';
-                            results += '<td class="align-middle">';
-                            results += '<form id="delete-form-' + patient.id + '" action="/patients/' + patient.id + '" method="POST" style="display: none;">' +
-                                '<input type="hidden" name="_token" value="{{ csrf_token() }}" />' +
-                                '<input type="hidden" name="_method" value="DELETE" />' +
-                            '</form>' +
-                            '<a href="#" onclick="event.preventDefault(); document.getElementById(\'delete-form-' + patient.id + '\').submit();">' +
-                                '<i class="far fa-trash-alt me-2"></i>Delete' +
-                            '</a>';
-                            results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + patient.edit_url + '"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>';
-                            results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + patient.display_url + '"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>';
-                            results += '</td>';
-                            results += '</tr>';
-                        });
-                        $('#search-results').html('<table class="table align-items-center mb-0">' + results + '</table>');
-                    }
-                });
-            } else {
-                $('#search-results').html('');
-            }
-        });
-    });
-</script> --}}
+    $('#search').on('input', function () {
+        let search = $(this).val();
+        if (search.length >= 3) {
+            $.ajax({
+                url: '/search',
+                type: 'GET',
+                data: { search: search },
+                success: function (response) {
+                    let results = '';
 
-{{-- <script>
-    $(document).ready(function () {
-        $('#search').on('input', function () {
-            let search = $(this).val();
-            if (search.length >= 3) {
-                $.ajax({
-                    url: '/search',
-                    type: 'GET',
-                    data: { search: search },
-                    success: function (response) {
-                        let results = '';
-                        $.each(response, function (index, patient) {
-                            results += '<tr>';
-                            results += '<td>';
-                            results += '<div class="d-flex px-2 py-1">';
-                            results += '<div class="d-flex flex-column justify-content-center">';
-                            results += '<h6 class="mb-0 text-sm">' + patient.name + '</h6>';
-                            results += '</div>';
-                            results += '</div>';
-                            results += '</td>';
-                            results += '<td>';
-                            results += '<p class="text-xs font-weight-bold mb-0">' + patient.DOB + '</p>';
-                            results += '</td>';
-                            results += '<td class="align-middle text-center text-sm">';
-                            results += '<h6 class="mb-0 text-sm">' + patient.contact_number + '</h6>';
-                            results += '</td>';
-                            results += '<td class="align-middle text-center">';
-                            results += '<span class="text-secondary text-xs font-weight-bold">' + patient.emergency_contact_number + '</span>';
-                            results += '</td>';
-                            results += '<td class="align-middle">';
-                            results += '<form id="delete-form-' + patient.id + '" action="/patients/' + patient.id + '" method="POST" style="display: none;">' +
-                                '<input type="hidden" name="_token" value="{{ csrf_token() }}" />' +
-                                '<input type="hidden" name="_method" value="DELETE" />' +
-                            '</form>' +
-                            '<a href="#" onclick="event.preventDefault(); document.getElementById(\'delete-form-' + patient.id + '\').submit();">' +
-                                '<i class="far fa-trash-alt me-2"></i>Delete' +
-                            '</a>';
-                            results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + patient.edit_url + '"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>';
-                            results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + patient.display_url + '"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>';
-                            results += '</td>';
-                            results += '</tr>';
-                        });
-                        $('#search-results').html('<table class="table align-items-center mb-0">' + results + '</table>');
-                    }
-                });
-            } else {
-                $('#search-results').html('');
-            }
-        });
+                    // Loop through the search results and build HTML for each product
+                    $.each(response, function (index, product) {
+                        results += '<tr>';
+                        results += '<td>';
+                        results += '<div class="d-flex px-2 py-1">';
+                        results += '<div class="d-flex flex-column justify-content-center">';
+                        results += '<h6 class="mb-0 text-sm">' + product.product_name + '</h6>';
+                        results += '</div>';
+                        results += '</div>';
+                        results += '</td>';
+                        results += '<td>';
+                        results += '<img src="' + product.image_url + '" alt="' + product.product_name + '" style="width: 50px" />';
+                        results += '</td>';
+                        results += '<td class="align-middle text-center text-sm">';
+                        results += '<h6 class="mb-0 text-sm">' + product.status + '</h6>';
+                        results += '</td>';
+                        results += '<td class="align-middle text-center">';
+                        results += '<span class="text-secondary text-xs font-weight-bold">' + product.price + '</span>';
+                        results += '</td>';
+                        results += '<td class="align-middle">';
+                        results += '<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="' + product.delete_url + '"  onclick="event.preventDefault(); document.getElementById(\'delete-form-' + product.id + '\').submit();"><i class="far fa-trash-alt me-2"></i>Delete</a>';
+                        results += '<form id="delete-form-' + product.id + '" action="' + product.delete_url + '" method="POST" style="display: none;">' +
+                            '<input type="hidden" name="_token" value="{{ csrf_token() }}" />' +
+                            '<input type="hidden" name="_method" value="DELETE" />' +
+                        '</form>';
+                        results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + product.edit_url + '"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>';
+                        results += '<a class="btn btn-link text-dark px-3 mb-0" href="' + product.display_url + '"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>';
+                        results += '</td>';
+                        results += '</tr>';
+                    });
+
+                    // Update the HTML of the search-results div with the results
+                    $('#search-results').html('<table class="table align-items-center mb-0">' + results + '</table>');
+                }
+            });
+        } else {
+            // Clear the search results if the search input is less than 3 characters
+            $('#search-results').html('');
+        }
     });
-</script> --}}
+});
+
+  </script>
+  
 
 
 
