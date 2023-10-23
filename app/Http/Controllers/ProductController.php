@@ -88,6 +88,16 @@ public function update(Request $request, Product $product)
     return back()->with('success', 'Product information updated successfully.');
 }
 
+public function display(Request $request, Product $product){
+    if ($request->hasFile('image')) {
+        // Handle image upload
+        $imagePath = $request->file('image')->store('products', 'public');
+        $data['image'] = $imagePath;
+    }
+
+    return view('product_display' , compact('product'));
+}
+
 
 
 }

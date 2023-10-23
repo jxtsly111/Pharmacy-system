@@ -80,7 +80,7 @@
                         </form>
                          <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('products.edit', ['product' => $product->id]) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 
-                        {{-- <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('patients.display', ['patient' => $patient->id]) }}"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a>  --}}
+                        <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('products.display', ['product' => $product->id]) }}"><i class="ni ni-collection text-dark me-2" aria-hidden="true"></i>Display</a> 
                       </td> 
                     </tr>
                     @endforeach
