@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,6 @@ Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name(
 Route::patch('/products/{product}', [ProductController::class,'update'])->name('products.update');
 Route::get('/products/{product}', [ProductController::class, 'display'])->name('products.display');
 Route::get('/search', [ProductController::class, 'search']);
+Route::get('purchase', [PurchaseController::class, 'purchase'])->name('purchase');
+
 
